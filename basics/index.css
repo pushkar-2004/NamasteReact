@@ -1,0 +1,21 @@
+#root{
+    border: 2px solid black;
+}
+
+.box{
+    margin: 5px;
+    padding: 5px;
+    border: 2px solid yellowgreen;
+}
+
+#heading{
+    color: red;
+}
+
+#heading1{
+    color: brown;
+}
+
+#heading2{
+    color: blue;
+}
