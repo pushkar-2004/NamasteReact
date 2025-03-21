@@ -1,10 +1,14 @@
+import { useState } from "react";
+import { LOGO_URL } from "../utils/constants";
+
 const Header = () => {
+    const [loginButton, setLoginButton] = useState("Login");
     return (
       <div className="header">
         <div className="logo-container">
           <img
             className="logo"
-            src="https://imgs.search.brave.com/nXnlpeW_2aL4u5A_NwsiE0CtnClkIuq4lRGZqE2oGRs/rs:fit:500:0:0:0/g:ce/aHR0cHM6Ly93d3cu/bG9nb2Rlc2lnbi5u/ZXQvbG9nby9mb29k/LWNsb2NoZS0yODM2/bGQucG5nP253bT0x/Jm53cz0xJmluZHVz/dHJ5PWZvb2Qmc2Y9/JnR4dF9rZXl3b3Jk/PUFsbA"
+            src={LOGO_URL} 
             alt="food app logo"
           />
         </div>
@@ -14,6 +18,13 @@ const Header = () => {
             <li>About Us</li>
             <li>Contact Us</li>
             <li>Cart</li>
+            <button className="login" onClick={()=>{
+              if(loginButton === "Login"){
+                setLoginButton("Logout");
+              }else{
+                setLoginButton("Login");
+              }
+            }}>{loginButton}</button>
           </ul>
         </div>
       </div>

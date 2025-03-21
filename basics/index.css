@@ -81,4 +81,50 @@
     margin-bottom: 10px;
 }
 
+.filter-btn{
+    padding: 10px;
+    margin: 10px;
+    background-color: #474749;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.spinner {
+    border: 12px solid #ded5d5;
+    border-top: 12px solid #340fd7; 
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    animation: spin 2s linear infinite;
+    margin: 100px auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 1.2rem;
+    color: #3498db;
+}
+
+.login {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login:hover {
+    background-color: #e64a19;
+}
 
