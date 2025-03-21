@@ -1,0 +1,23 @@
+{
+  "name": "basics",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/pushkar-2004/NamasteReact.git)"
+  },
+  "author": "Pushkar Kumar",
+  "license": "ISC",
+  "devDependencies": {
+    "@parcel/transformer-react-refresh-wrap": "^2.14.1",
+    "parcel": "^2.14.1"
+  },
+  "dependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
