@@ -1,6 +1,8 @@
 import RestaurentCard from "./RestaurentCard";
 // import resInfo from "../utils/mock_data"
 import { useEffect, useState } from "react";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
   const [listOfRestaurents, setListOfRestaurents] = useState([]);
@@ -15,7 +17,7 @@ const Body = () => {
 
   const fetchData = async () => {
     const data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.4271656&lng=81.7719141&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=25.5940947&lng=85.1375645&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
     );
 
     const json = await data.json();
@@ -28,11 +30,7 @@ const Body = () => {
   };
 
   if (listOfRestaurents.length === 0) {
-    return (
-      <div className="spinner">
-        <h1 className="loading"></h1>
-      </div>
-    );
+    return <Shimmer />;
   }
 
   return (
@@ -79,7 +77,11 @@ const Body = () => {
       </div>
       <div className="res-container">
         {listOfRestaurents.map((res, index) => {
-          return <RestaurentCard key={res.info.id} resData={res} />;
+          return (
+            <Link key={res.info.id} to={"/restaurent/" + res.info.id}>
+              <RestaurentCard resData={res} />
+            </Link>
+          );
         })}
       </div>
     </div>

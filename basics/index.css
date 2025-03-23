@@ -9,8 +9,8 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #333;
-    color: #fff;
+    background-color: #eee0bc;
+    color: #e4e0e0;
     font-size: 1.06rem;
 }
 
@@ -37,7 +37,7 @@
 
 .nav-items > ul > li{
     margin-right: 10px;
-
+    
 }
 
 .res-container {
