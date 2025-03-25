@@ -10,7 +10,7 @@ import Menue from "./components/Menue";
 
 const AppLayout = () => {
   return (
-    <div className="App">
+    <div className="">
       <Header />
       <Outlet />
     </div>

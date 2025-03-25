@@ -1,8 +1,9 @@
-import RestaurentCard from "./RestaurentCard";
+import RestaurentCard, { vegRestaurentCard } from "./RestaurentCard";
 // import resInfo from "../utils/mock_data"
 import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnline from "../utils/useOnline";
 
 const Body = () => {
   const [listOfRestaurents, setListOfRestaurents] = useState([]);
@@ -10,6 +11,8 @@ const Body = () => {
   // const arr = listOfRestaurents;
 
   const [searchText, setsearchText] = useState("");
+
+  const VegetarianRes = vegRestaurentCard(RestaurentCard);
 
   useEffect(() => {
     fetchData();
@@ -21,6 +24,7 @@ const Body = () => {
     );
 
     const json = await data.json();
+    console.log(json);
     setListOfRestaurents(
       json.data.cards[4].card.card.gridElements.infoWithStyle.restaurants
     );
@@ -29,6 +33,12 @@ const Body = () => {
     );
   };
 
+  const onlineStatues = useOnline();
+
+  if (onlineStatues === false) {
+    return <h1>Looks like you are offline!!!</h1>;
+  }
+
   if (listOfRestaurents.length === 0) {
     return <Shimmer />;
   }
@@ -36,17 +46,17 @@ const Body = () => {
   return (
     <div className="body">
       <div className="filter">
-        <div className="search">
+        <div className=" search mx-4 px-4">
           <input
             type="text"
-            className="search"
+            className="border-2 border-black rounded"
             value={searchText}
             onChange={(e) => {
               setsearchText(e.target.value);
             }}
           />
           <button
-            className="search-btn"
+            className="px-4 m-4 bg-green-100 border-2 rounded border-black"
             onClick={() => {
               console.log(searchText);
               const filteredRestaurents = listOfRestaurents1.filter((res) => {
@@ -62,24 +72,29 @@ const Body = () => {
             Search
           </button>
         </div>
-        <button
-          className="filter-btn"
-          onClick={() => {
-            console.log("clicked");
-            const restaurentInfo = listOfRestaurents.filter((res) => {
-              return res.info.avgRating >= 4.5;
-            });
-            setListOfRestaurents(restaurentInfo);
-          }}
-        >
-          Top Rated Restaurents
-        </button>
+        <div className=" search mx-4 px-4">
+          <button
+            onClick={() => {
+              console.log("clicked");
+              const restaurentInfo = listOfRestaurents.filter((res) => {
+                return res.info.avgRating >= 4.5;
+              });
+              setListOfRestaurents(restaurentInfo);
+            }}
+          >
+            Top Rated Restaurents
+          </button>
+        </div>
       </div>
-      <div className="res-container">
+      <div className="res-container flex flex-wrap">
         {listOfRestaurents.map((res, index) => {
           return (
             <Link key={res.info.id} to={"/restaurent/" + res.info.id}>
-              <RestaurentCard resData={res} />
+              {"veg" in res.info ? (
+                <VegetarianRes resData={res} />
+              ) : (
+                <RestaurentCard resData={res} />
+              )}
             </Link>
           );
         })}
