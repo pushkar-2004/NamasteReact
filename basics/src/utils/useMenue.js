@@ -14,7 +14,7 @@ const useMenue = (resid) => {
           MENUE_URL+resid
         );
         const json = await data.json();
-        console.log("inside asyn function");
+        // console.log("inside asyn function");
         console.log(json);
         setresInfo(json.data.cards);
       }; 
