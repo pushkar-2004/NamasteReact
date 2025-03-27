@@ -9,13 +9,13 @@ const useMenue = (resid) => {
     },[])
     const fetchMenue = async () => {
 
-        console.log("resid : "+resid);
+        // console.log("resid : "+resid);
         const data = await fetch(
           MENUE_URL+resid
         );
         const json = await data.json();
         // console.log("inside asyn function");
-        console.log(json);
+        // console.log(json);
         setresInfo(json.data.cards);
       }; 
     return resInfo;

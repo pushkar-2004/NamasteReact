@@ -1,16 +1,11 @@
 import { useState } from "react";
 import AccordianBody from "./AccordianBody";
 
-const Accordian = (item) => {
-
-  const [showItems,setshowItems] = useState(false);
-
+const Accordian = ({ item, showItems, setshowItems }) => {
   // console.log(item);
   const handleClick = () => {
-    console.log("clicked")
-    setshowItems(!showItems)
-  }
-
+    setshowItems();
+  };
 
   return (
     <div className="flex">
@@ -19,7 +14,7 @@ const Accordian = (item) => {
       <div className="w-6/12 mx-auto my-4 bg-gray-50 shadow-lg p-4 ">
         <div className="flex justify-between" onClick={handleClick}>
           <span className="font-bold text-lg cursor-pointer">
-            {item.data.title} ({item.data.temp.length})
+            {item.title} ({item.temp.length})
           </span>
           <span>
             {
@@ -31,30 +26,8 @@ const Accordian = (item) => {
             }
           </span>
         </div>
-        {showItems && <AccordianBody data = {item.data.temp} />}
+        {showItems && <AccordianBody data={item.temp} />}
       </div>
-
-      {/* body */}
-
-      
-
-      {/* <ul className="p-2 m-2">
-        {recommended.map((item, index) => (
-          <li
-            key={index}
-            className="border-2 border-solid border-black w-6/12 my-4 mx-auto p-2 bg-green-100"
-          >
-            <h1 className="font-bold m-2 p-2">{item.title}</h1>
-            <ul>
-              {item.temp.map((subItem, subIndex) => (
-                <li key={subIndex} className="p-1 m-1">
-                  {subItem.name} - {subItem.price / 100}
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul> */}
     </div>
   );
 };
